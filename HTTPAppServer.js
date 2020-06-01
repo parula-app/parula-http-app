@@ -2,10 +2,13 @@ import { intentsJSONWithValues } from './IntentsJSONGenerator.js';
 import { Client } from 'pia/client/Client.js';
 import { getConfig } from 'pia/util/config.js';
 import { assert } from 'pia/util/util.js';
+import express from 'express';
+import http from 'http';
+import r2 from 'r2';
 import cryptoRandomString from 'crypto-random-string';
 
-const kOurPortFrom = 12127;
-const kOurPortTo = 12712;
+const kPortFrom = 12127;
+const kPortTo = 12712;
 var gAuthKey = null;
 const kCoreURL = "http://localhost:12777";
 
@@ -29,25 +32,25 @@ export default class HTTPAppServer {
   constructor(apps) {
     assert(apps.length, "Need array of apps");
     apps.forEach(app => assert(app.intents, "App has wrong type"));
-    this.apps = apps;
+    this.apps = apps; // {Array of AppBase}
+    this._client = null; // {Client}
+    this._expressApp = null; // {Express}
   }
 
   async start() {
-    gAuthKey = cryptoRandomString({length: 10});
-
     this._client = new Client();
-    await this._client.loadApps(apps);
-    this._expressApp = this._createServer();
+    await this._client.loadApps(this.apps, "en");
+
+    gAuthKey = cryptoRandomString({length: 10});
+    await this._createServer();
     await this._registerWithCore();
   }
 
-  _createServer() {
-    let expressApp = express();
-    let server = http.createServer(app);
-    expressApp.set("json spaces", 2);
-    expressApp.use(fromWebsite);
-    expressApp.options("/*");
-    this._findFreePort(server);
+  async _createServer() {
+    let expressApp = this._expressApp = express();
+    let server = http.createServer(expressApp);
+    //expressApp.set("json spaces", 2);
+    await this._findFreePort(server);
 
     // Register the REST URL handler for each intent
     for (let app of this.apps) {
@@ -57,27 +60,26 @@ export default class HTTPAppServer {
           await this.intentCall(intent, req.body)));
       }
     }
-
-    return app;
   }
 
   /**
    * Calls `server.listen(port)` with a random port.
    */
-  _findFreePort(server) {
+  async _findFreePort(server) {
     let failures = 0;
-    let width = kOurPortTo - kOurPortFrom;
+    let width = kPortTo - kPortFrom;
+    const maxFailures = 10;
     while (1) {
       try {
         let port = kPortFrom + Math.ceil(Math.random() * width);
-        console.info(`Trying port ${port}`);
-        server.listen(port);
+        await listen(server, port);
         this._port = port;
-        console.log(`Listening on port ${port} with auth key ${this._authKey}`);
+        console.log(`Listening on port ${port} with auth key ${gAuthKey}`);
+        return;
       } catch (ex) {
-        console.error(ex);
-        if (ex.code == "foo") {
-          if (++failures > width * 2) { // infinite loop protection
+        if (ex.code == "EADDRINUSE") {
+          if (++failures > maxFailures) { // infinite loop protection
+            console.log("Failed too often while trying to open port");
             throw ex;
           }
           // continue looping
@@ -100,13 +102,21 @@ export default class HTTPAppServer {
     if (!coreURL.includes("//localhost:")) {
       myURL = `http://${os.hostname()}:${this._port}/`;
     }
-    for (let app of this.apps) {
-      let json = {
-        appID: app.id,
-        url: myURL,
-        intents: intentsJSONWithValues(app),
-      };
-      await r2.put(coreURL, { json: json });
+    try {
+      for (let app of this.apps) {
+        let json = {
+          appID: app.id,
+          url: myURL,
+          intents: intentsJSONWithValues(app),
+        };
+        await r2.put(coreURL, { json: json }).json;
+      }
+    } catch (ex) {
+      if (ex.code == "ECONNREFUSED") {
+        throw new Error(`Pia core is not running, on <${coreURL}>`);
+      } else {
+        throw ex;
+      }
     }
   }
 
@@ -177,4 +187,18 @@ class HTTPError extends Error {
     super(message);
     this.code = httpErrorCode;
   }
+}
+
+/**
+ * http server listen() returns and then errors out.
+ * This function allows to await it, including in error cases.
+ *
+ * https://github.com/nodejs/node/issues/21482
+ */
+function listen(server, port) {
+  return new Promise((resolve, reject) => {
+    server.listen(port)
+      .once('listening', resolve)
+      .once('error', reject);
+  });
 }

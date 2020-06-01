@@ -1,5 +1,3 @@
-import { AppBase } from 'pia/baseapp/AppBase.js';
-import { Intent } from 'pia/baseapp/Intent.js';
 import { FiniteDataType } from 'pia/baseapp/datatype/FiniteDataType.js';
 import { EnumDataType } from 'pia/baseapp/datatype/EnumDataType.js';
 import { ListDataType } from 'pia/baseapp/datatype/ListDataType.js';
@@ -22,13 +20,13 @@ import { assert } from 'pia/util/util.js';
  * @returns {JSON} intents JSON
  */
 export function intentsJSONWithValues(app) {
-  assert(app instanceof AppBase);
+  assert(app.intents, "App has wrong type");
 
   let intentsJSON = {
     interactionModel: {
       languageModel: {
         invocationName: app.id,
-        intents: this.intents.map(intent => ( {
+        intents: Object.values(app.intents).map(intent => ( {
           name: intent.id,
           samples: intent.commands,
           slots: Object.entries(intent.parameters).map(([ name, datatype ]) => ( {
@@ -44,13 +42,13 @@ export function intentsJSONWithValues(app) {
   // types
   let typesJSON = intentsJSON.interactionModel.languageModel.types;
   let dataTypes = new Set();
-  for (let intent of this.intents) {
+  for (let intent of Object.values(app.intents)) {
     for (let type of Object.values(intent.parameters)) {
       dataTypes.add(type);
     }
   }
   for (let dataType of dataTypes) {
-    if (!(dataType instanceof FiniteDataType)) {
+    if (!(dataType instanceof FiniteDataType)) { // TODO will always be false
       continue;
     }
     let values = [];
