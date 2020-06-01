@@ -60,11 +60,6 @@ export class HTTPAppServer {
       }
     }
 
-    expressApp.get("/apps.json", (req, resp) => catchHTTPJSON(req, resp, () =>
-      this.appsJSON()));
-    expressApp.get("/:appid/intents.json", (req, resp) => catchHTTPJSON(req, resp, () =>
-      this.intentsJSONWithValues(req.params.appid)));
-
     return app;
   }
 
@@ -93,31 +88,6 @@ export class HTTPAppServer {
         }
       }
     }
-  }
-
-  /**
-   * Lists the names of all apps
-   */
-  appsJSON(request, response) {
-    let appsJSON = {
-      apps: this.apps.map(app => app.id),
-    }
-    return appsJSON;
-  }
-
-  /**
-   * Generates the intents JSON file for an app, plus
-   * the allowed values for each finite type.
-   * @param appID {string}
-   * @returns {JSON} intents JSON
-   */
-  intentsJSONWithValues(appid) {
-    assert(appid && typeof(appid) == "string", "Need app ID");
-    let app = this.apps.find(app => app.id == appid);
-    if (!app) {
-      throw new HTTPError(404, "App not found here");
-    }
-    return intentsJSONWithValues(app);
   }
 
   /**
