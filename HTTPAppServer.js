@@ -60,7 +60,7 @@ export default class HTTPAppServer {
       for (let intent of Object.values(app.intents)) {
         assert(intent.parameters, "Intent has wrong type");
         expressApp.post(`/${app.id}/${intent.id}`, authenticator, express.json(), (req, resp) => catchHTTPJSON(req, resp, async () =>
-          await this.intentCall(intent, req.body)));
+          await this.intentCall(intent, req)));
       }
     }
   }
@@ -150,7 +150,8 @@ export default class HTTPAppServer {
     // TODO due to async, another call can overwrite lang again.
     // Need to make a new ClientAPI or Client object.
 
-    return await intent.run(args, this._client.clientAPI);
+    let response = await intent.run(args, this._client.clientAPI);
+    return { responseText: response };
   }
 }
 
@@ -185,6 +186,7 @@ function authenticator(request, response, next) {
 async function catchHTTPJSON(request, response, func) {
   try {
     let json = await func();
+    //console.log("response", json);
     response.json(json);
   } catch (ex) {
     console.error(ex);
