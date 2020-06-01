@@ -109,7 +109,7 @@ export default class HTTPAppServer {
           url: myURL,
           intents: intentsJSONWithValues(app),
         };
-        await r2.put(coreURL, { json: json }).json;
+        await r2.put(coreURL + "app/http", { json: json }).json;
       }
     } catch (ex) {
       if (ex.code == "ECONNREFUSED") {
@@ -166,26 +166,29 @@ function authenticator(request, response, next) {
   }
 }
 
-
 /**
  * Calls `func`, returns the JSON as response to the HTTP client,
  * and catches exceptions and returns them to the HTTP client.
  *
- * @param func {Function} A function that returns JSON
+ * @param func {async function} A function that returns JSON
  */
-function catchHTTPJSON(request, response, func) {
+async function catchHTTPJSON(request, response, func) {
   try {
-    let json = func();
+    let json = await func();
     response.json(json);
   } catch (ex) {
-    response.send(ex.code || 400, ex.message);
+    console.error(ex);
+    response.status(ex.httpErrorCode || 400).json({
+      errorMessage: ex.message,
+      errorCode: ex.code,
+    });
   }
 }
 
 class HTTPError extends Error {
   constructor(httpErrorCode, message) {
     super(message);
-    this.code = httpErrorCode;
+    this.httpErrorCode = httpErrorCode;
   }
 }
 

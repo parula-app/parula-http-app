@@ -29,12 +29,12 @@ export function intentsJSONWithValues(app) {
         intents: Object.values(app.intents).map(intent => ( {
           name: intent.id,
           samples: intent.commands,
-          slots: Object.entries(intent.parameters).map(([ name, datatype ]) => ( {
+          slots: Object.entries(intent.parameters).map(([ name, param ]) => ( {
             name: name,
-            type: datatype.id
+            type: param.dataType.id
           } ))
         } )),
-        types: {}
+        types: []
       }
     }
   };
