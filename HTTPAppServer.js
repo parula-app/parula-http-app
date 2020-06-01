@@ -160,17 +160,13 @@ function authenticator(request, response, next) {
 
 
 /**
-  * Calls `func`, returns the JSON as response to the HTTP client,
-  * and catches exceptions and returns them to the HTTP client.
-  *
-  * @param func {Function} A function that returns JSON
-  */
+ * Calls `func`, returns the JSON as response to the HTTP client,
+ * and catches exceptions and returns them to the HTTP client.
+ *
+ * @param func {Function} A function that returns JSON
+ */
 function catchHTTPJSON(request, response, func) {
   try {
-    // TODO Ensure that the caller is a Pia core
-    // belonging to the user. The responses will
-    // include lots of personal information,
-    // and this is a server, so we need to verify.
     let json = func();
     response.json(json);
   } catch (ex) {

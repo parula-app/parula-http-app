@@ -7,20 +7,20 @@ import { NamedValuesDataType } from 'pia/baseapp/datatype/NamedValuesDataType.js
 import { assert } from 'pia/util/util.js';
 
 /**
-  * Generates the intents JSON file for the app,
-  * plus the allowed values for each finite type.
-  *
-  * This re-builds the intents JSON file
-  * from the available data in the apps class.
-  * This is slightly different from the intents JSON file on disk, because:
-  * 1. it contains the list/finite values expanded based
-  * on the data that the app loaded,
-  * 2. responses removed.
-  * 3. the commands have already been expanded.
-  *
-  * @param app {AppBase}
-  * @returns {JSON} intents JSON
-  */
+ * Generates the intents JSON file for the app,
+ * plus the allowed values for each finite type.
+ *
+ * This re-builds the intents JSON file
+ * from the available data in the apps class.
+ * This is slightly different from the intents JSON file on disk, because:
+ * 1. it contains the list/finite values expanded based
+ * on the data that the app loaded,
+ * 2. responses removed.
+ * 3. the commands have already been expanded.
+ *
+ * @param app {AppBase}
+ * @returns {JSON} intents JSON
+ */
 export function intentsJSONWithValues(app) {
   assert(app instanceof AppBase);
 
