@@ -2,7 +2,7 @@
     "name": "pia-app-http",
     "version": "0.1.0",
     "description": "A Pia voice app that is running in its own process and communicating with Pia using HTTP. This is implementing a HTTP server for the app, so that Pia core can call the app.",
-    "main": "./start.js",
+    "main": "./HTTPAppServer.js",
     "author": "Ben Bucksch",
     "license": "AGPL-3.0",
     "homepage": "https://pia.im",
@@ -11,9 +11,9 @@
         "url": "git://github.com/benbucksch/pia.git"
     },
     "dependencies": {
-        "pia": "../../pia/",
         "crypto-random-string": "^3.2.0",
         "express": "^4.17.1",
+        "pia": "https://github.com/benbucksch/pia",
         "r2": "^2.0.1",
         "ws": "^7.2.3",
         "ws-wrapper": "^2.0.2"

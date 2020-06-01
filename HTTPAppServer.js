@@ -27,7 +27,7 @@ const kCoreURL = "http://localhost:12777";
  * The result is a JSON with either a sentence as response to the user,
  * or an error message and code.
  */
-export class HTTPAppServer {
+export default class HTTPAppServer {
   constructor(apps) {
     assert(apps.length, "Need array of apps");
     apps.forEach(app => assert(app instanceof AppBase, "apps item has wrong type"));

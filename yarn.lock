@@ -1158,8 +1158,9 @@ pcm-convert@^1.6.5:
     is-buffer "^1.1.5"
     object-assign "^4.1.1"
 
-pia@../../pia/:
+"pia@https://github.com/benbucksch/pia":
   version "0.1.0"
+  resolved "https://github.com/benbucksch/pia#c64b6485072446893dfa293bfc38ab5ec5ced7fb"
   dependencies:
     "@nano-sql/core" "^2.3.7"
     "@nano-sql/plugin-fuzzy-search" "^2.0.2"
