@@ -1,6 +1,4 @@
 import { intentsJSONWithValues } from './IntentsJSONGenerator.js';
-import { AppBase } from 'pia/baseapp/AppBase.js';
-import { Intent } from 'pia/baseapp/Intent.js';
 import { Client } from 'pia/client/Client.js';
 import { getConfig } from 'pia/util/config.js';
 import { assert } from 'pia/util/util.js';
@@ -30,7 +28,7 @@ const kCoreURL = "http://localhost:12777";
 export default class HTTPAppServer {
   constructor(apps) {
     assert(apps.length, "Need array of apps");
-    apps.forEach(app => assert(app instanceof AppBase, "apps item has wrong type"));
+    apps.forEach(app => assert(app.intents, "App has wrong type"));
     this.apps = apps;
   }
 
@@ -54,7 +52,7 @@ export default class HTTPAppServer {
     // Register the REST URL handler for each intent
     for (let app of this.apps) {
       for (let intent of Object.values(app.intents)) {
-        assert(intent instanceof Intent);
+        assert(intent.parameters, "Intent has wrong type");
         expressApp.post(`/${app.id}/${intent.id}`, authenticator, express.json(), (req, resp) => catchHTTPJSON(req, resp, async () =>
           await this.intentCall(intent, req.body)));
       }
