@@ -35,6 +35,7 @@ export default class HTTPAppServer {
     this.apps = apps; // {Array of AppBase}
     this._client = null; // {Client}
     this._expressApp = null; // {Express}
+    this._port = null; // {Integer}
   }
 
   async start() {
@@ -44,6 +45,8 @@ export default class HTTPAppServer {
     gAuthKey = cryptoRandomString({length: 10});
     await this._createServer();
     await this._registerWithCore();
+    console.log(`Listening on port ${this._port} with auth key ${gAuthKey}`);
+    console.log("Started and registered");
   }
 
   async _createServer() {
@@ -74,7 +77,6 @@ export default class HTTPAppServer {
         let port = kPortFrom + Math.ceil(Math.random() * width);
         await listen(server, port);
         this._port = port;
-        console.log(`Listening on port ${port} with auth key ${gAuthKey}`);
         return;
       } catch (ex) {
         if (ex.code == "EADDRINUSE") {
@@ -107,6 +109,7 @@ export default class HTTPAppServer {
         let json = {
           appID: app.id,
           url: myURL,
+          authKey: gAuthKey,
           intents: intentsJSONWithValues(app),
         };
         await r2.put(coreURL + "app/http", { json: json }).json;
@@ -128,17 +131,24 @@ export default class HTTPAppServer {
    *
    * @param intent {Intent}
    * @param request {HTTP server request}
-   *   Must have body already converted to JSON
+   *   Body must be JSON with: {
+   *     args: {
+   *       <slotname>: <value>,
+   *       ...
+   *     }
+   *   }
+   * @see HTTPApp.js for the HTTP client = Pia core
    */
   async intentCall(intent, request) {
     // TODO map back NamedValues from term to value
     // TODO sanitize and security-check the arguments
     let args = request.body.args;
+    console.log("intent", intent.id, "called with args", args);
 
     let langs = intent.app.languages || [ "en" ]; // TODO
     this._client.lang = request.acceptsLanguages(langs) || "en";
     // TODO due to async, another call can overwrite lang again.
-    // Need to make a new ClientAPI or Client object just for this call.
+    // Need to make a new ClientAPI or Client object.
 
     return await intent.run(args, this._client.clientAPI);
   }
