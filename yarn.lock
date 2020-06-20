@@ -25,9 +25,9 @@
     stemmer "^1.0.3"
 
 "@types/node@^12.12.36":
-  version "12.12.42"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.42.tgz#d0d1149336bd07540dd1ea576692829d575dec34"
-  integrity sha512-R/9QdYFLL9dE9l5cWWzWIZByVGFd7lk7JVOJ7KD+E1SJ4gni7XJRLz9QTjyYQiHIqEAgku9VgxdLjMlhhUaAFg==
+  version "12.12.47"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.47.tgz#5007b8866a2f9150de82335ca7e24dd1d59bdfb5"
+  integrity sha512-yzBInQFhdY8kaZmqoL2+3U5dSTMrKaYcb561VU+lDzAYvqt+2lojvBEy+hmpSNuXnPTx7m9+04CzWYOUqWME2A==
 
 abbrev@1:
   version "1.1.1"
@@ -194,10 +194,10 @@ buffer-fill@^1.0.0:
   resolved "https://registry.yarnpkg.com/buffer-fill/-/buffer-fill-1.0.0.tgz#f8f78b76789888ef39f205cd637f68e702122b2c"
   integrity sha1-+PeLdniYiO858gXNY39o5wISKyw=
 
-bumblebee-hotword-node@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/bumblebee-hotword-node/-/bumblebee-hotword-node-0.0.5.tgz#e4490a0ca0d28988fe078b6d0c94d68a1da0cdaa"
-  integrity sha512-teQCCnJlNhPAl3PguzwEH7nq+JslazfeVjJVe6DYFRR5yF2B4Yj5Uu9aYnq8I+dTE/AEAJR9fgsqfZCcYnv0Yw==
+bumblebee-hotword-node@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/bumblebee-hotword-node/-/bumblebee-hotword-node-0.0.6.tgz#06bd4d4f4fb7e7cdc813311a0eaf0fb1b4bff79d"
+  integrity sha512-x5UySZ2jGTctMoTQdE7UNYBbuA+dIT9RSUn65ZAgG9qrrpV+kjaA1KUjoZmZ9UWKenKym9/uHYNMWp36pPslgQ==
   dependencies:
     node-audiorecorder "^1.4.2"
     pcm-convert "^1.6.5"
@@ -376,14 +376,14 @@ deep-extend@^0.6.0:
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
   integrity sha512-LOHxIOaPYdHlJRtCQfDIVZtfw/ufM8+rVj649RIHzcm/vGwQRXFt6OPqIFWsm2XEMrNIEtWR64sY1LEKD2vAOA==
 
-deepspeech@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/deepspeech/-/deepspeech-0.6.1.tgz#4696af219b8fa9c1671004cb92554f9c22adabe1"
-  integrity sha512-ULgN5qAFmpbCI2Hn7yndhAA+MAWsvqe4Az7RPvN6tCIV9UeIhfA3dKh2hPmNGDZ58rFrM8C1knvoyWmZuf/LNg==
+deepspeech@^0.7.3:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/deepspeech/-/deepspeech-0.7.4.tgz#1a8105a0e0aecae12281e5989d06d384145a7625"
+  integrity sha512-SVyMn0kKOCE6/80zLfXWhiqb41Wc4pbdcJuNe4cUS03mgPCk49X/wr5INfmvrf7vl29MEQSZaMh8KDDuAoA0qA==
   dependencies:
     argparse "1.0.x"
     memory-stream "0.0.3"
-    node-pre-gyp "0.13.x"
+    node-pre-gyp "0.15.x"
     node-wav "0.0.2"
     sox-stream "2.0.x"
 
@@ -406,14 +406,6 @@ detect-libc@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
   integrity sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
-
-didyoumean2@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/didyoumean2/-/didyoumean2-4.0.0.tgz#94925890090ef1b5cdeec9f06456b12ccc235b16"
-  integrity sha512-7+OMIHqPDJ4uxeExQx8cSk26oD3KUloAQzi2R+3rmTU4IHvSDDmWZTQ6bmC4+MTw61DkYoh5ARxwS9MRoz0t2A==
-  dependencies:
-    leven "^3.1.0"
-    lodash.deburr "^4.1.0"
 
 duplexer@^0.1.1, duplexer@~0.1.1:
   version "0.1.1"
@@ -642,9 +634,9 @@ has-unicode@^2.0.0:
   integrity sha1-4Ob+aijPUROIVeCG0Wkedx3iqLk=
 
 hash-to-array@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/hash-to-array/-/hash-to-array-1.0.1.tgz#2b0e284c04a32c34580248a332b962eb155e0f6f"
-  integrity sha1-Kw4oTASjLDRYAkijMrli6xVeD28=
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/hash-to-array/-/hash-to-array-1.0.2.tgz#0a41232d07c9bc8f5c97ee0998f773bf4538c737"
+  integrity sha512-XE6/n2DLqccbA/euPqPnz8j1H8MiU1MsxY7ZG5Na0+eaZc13DHqhR+5S7sDKp8OeW5w+5WhX7j8ZfXYiTi0OfA==
 
 http-errors@1.7.2:
   version "1.7.2"
@@ -801,10 +793,10 @@ its-set@^1.1.5:
     babel-runtime "6.x.x"
     lodash.get "^4.4.2"
 
-leven@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
-  integrity sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==
+js-chess-engine@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/js-chess-engine/-/js-chess-engine-0.3.0.tgz#404165a4ff367ea6918a480121fa81d4a9c3ce04"
+  integrity sha512-Y0b5CWrdetqwcchSI/8h0OyI/WBntipGiDfDbXRNl8qlmBFEA1GfA/xDG5JE4SGX/q0eiNW9M7Axnzu2Ci57/Q==
 
 levenshtein-edit-distance@^2.0.4:
   version "2.0.5"
@@ -815,11 +807,6 @@ lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
   integrity sha1-soqmKIorn8ZRA1x3EfZathkDMaY=
-
-lodash.deburr@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/lodash.deburr/-/lodash.deburr-4.1.0.tgz#ddb1bbb3ef07458c0177ba07de14422cb033ff9b"
-  integrity sha1-3bG7s+8HRYwBd7oH3hRCLLAz/5s=
 
 lodash.get@^4.4.2:
   version "4.4.2"
@@ -907,7 +894,7 @@ minizlib@^1.2.1:
   dependencies:
     minipass "^2.9.0"
 
-mkdirp@^0.5.0, mkdirp@^0.5.1:
+mkdirp@^0.5.0, mkdirp@^0.5.3:
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.5.tgz#d91cefd62d1436ca0f41620e251288d420099def"
   integrity sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
@@ -973,7 +960,7 @@ naudiodon@^2.1.2:
     node-addon-api "^2.0.0"
     segfault-handler "^1.3.0"
 
-needle@^2.2.1:
+needle@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/needle/-/needle-2.5.0.tgz#e6fc4b3cc6c25caed7554bd613a5cf0bac8c31c0"
   integrity sha512-o/qITSDR0JCyCKEQ1/1bnUXMmznxabbwi/Y4WwJElf+evwJNFNwIDMCCt5IigFVxgeGBJESLohGtIS9gEzo1fA==
@@ -988,9 +975,9 @@ negotiator@0.6.2:
   integrity sha512-hZXc7K2e+PgeI1eDBe/10Ard4ekbfrrqG8Ep+8Jmf4JID2bNg7NvCPOZN+kfF574pFQI7mum2AUqDidoKqcTOw==
 
 node-addon-api@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-2.0.0.tgz#f9afb8d777a91525244b01775ea0ddbe1125483b"
-  integrity sha512-ASCL5U13as7HhOExbT6OlWJJUV/lLzL2voOSP1UVehpRD8FbSrSDjfScK/KwAvVTI5AS6r4VwbOMlIqtvRidnA==
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-2.0.1.tgz#4fd0931bf6d7e48b219ff3e6abc73cbb0252b7a3"
+  integrity sha512-2WVfwRfIr1AVn3dRq4yRc2Hn35ND+mPJH6inC6bjpYCZVrpXPB4j3T6i//OGVfqVsR1t/X/axRulDsheq4F0LQ==
 
 node-audiorecorder@^1.4.2:
   version "1.4.2"
@@ -1010,21 +997,21 @@ node-fetch@^2.0.0-alpha.8, node-fetch@^2.6.0:
     bottleneck "^2.19.5"
     get-ssl-certificate "^2.3.3"
 
-node-pre-gyp@0.13.x:
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.13.0.tgz#df9ab7b68dd6498137717838e4f92a33fc9daa42"
-  integrity sha512-Md1D3xnEne8b/HGVQkZZwV27WUi1ZRuZBij24TNaZwUPU3ZAFtvT6xxJGaUVillfmMKnn5oD1HoGsp2Ftik7SQ==
+node-pre-gyp@0.15.x:
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.15.0.tgz#c2fc383276b74c7ffa842925241553e8b40f1087"
+  integrity sha512-7QcZa8/fpaU/BKenjcaeFF9hLz2+7S9AqyXFhlH/rilsQ/hPZKK32RtR5EQHJElgu+q5RfbJ34KriI79UWaorA==
   dependencies:
     detect-libc "^1.0.2"
-    mkdirp "^0.5.1"
-    needle "^2.2.1"
+    mkdirp "^0.5.3"
+    needle "^2.5.0"
     nopt "^4.0.1"
     npm-packlist "^1.1.6"
     npmlog "^4.0.2"
     rc "^1.2.7"
     rimraf "^2.6.1"
     semver "^5.3.0"
-    tar "^4"
+    tar "^4.4.2"
 
 node-vad@^1.1.4:
   version "1.1.4"
@@ -1159,19 +1146,19 @@ pcm-convert@^1.6.5:
     object-assign "^4.1.1"
 
 "pia@https://github.com/benbucksch/pia":
-  version "0.1.0"
-  resolved "https://github.com/benbucksch/pia#c64b6485072446893dfa293bfc38ab5ec5ced7fb"
+  version "0.1.1"
+  resolved "https://github.com/benbucksch/pia#07a1d3dbf765e91e8f662884904d085cf52f96d9"
   dependencies:
     "@nano-sql/core" "^2.3.7"
     "@nano-sql/plugin-fuzzy-search" "^2.0.2"
     argparse "^1.0.10"
-    bumblebee-hotword-node "^0.0.5"
+    bumblebee-hotword-node "^0.0.6"
     dav "^1.8.0"
-    deepspeech "^0.6.1"
-    didyoumean2 "^4.0.0"
+    deepspeech "^0.7.3"
     express "^4.17.1"
     ical "^0.8.0"
     iso-639-1 "^2.1.3"
+    js-chess-engine "^0.3.0"
     mpc-js "^1.2.1"
     mpg123 "https://github.com/benbucksch/mpg123"
     mpg321 "^0.1.5"
@@ -1180,8 +1167,6 @@ pcm-convert@^1.6.5:
     node-hue-api "https://github.com/benbucksch/node-hue-api"
     node-vad "^1.1.4"
     r2 "^2.0.1"
-    sox-audio "^0.3.0"
-    sox-stream "^2.0.3"
     speaker "^0.5.1"
     stream-buffers "^3.0.2"
     sugar-date "^2.0.6"
@@ -1393,14 +1378,7 @@ snap-db@^1.1.1:
   resolved "https://registry.yarnpkg.com/snap-db/-/snap-db-1.1.6.tgz#ee223c79dcfb4945af29b6ae32c9562988623d5d"
   integrity sha512-KxsO5RnY70J48f6poy0qVm2WS8ZbqG0PUVP2fjd7dvlaCMZ/DxtDv5fhhIVwkP2lOmNQ9QsTFfDuCA7N+TF3qg==
 
-sox-audio@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/sox-audio/-/sox-audio-0.3.0.tgz#dd43a4dd7fa97ff4066390c39903ae4ab198aec5"
-  integrity sha1-3UOk3X+pf/QGY5DDmQOuSrGYrsU=
-  dependencies:
-    through "^2.3.6"
-
-sox-stream@2.0.x, sox-stream@^2.0.3:
+sox-stream@2.0.x:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/sox-stream/-/sox-stream-2.0.6.tgz#c815b72f01815e8deb85770b85ce08532125fdfd"
   integrity sha512-dzscjI1mQSNWagW9iEymYenU1QuDTQUcEvAYmdqSgWhxAOgvvwaecMa6CORzQwouRWacxHsChKWav8m7fyeVXw==
@@ -1534,7 +1512,7 @@ supports-color@^5.3.0:
   dependencies:
     has-flag "^3.0.0"
 
-tar@^4:
+tar@^4.4.2:
   version "4.4.13"
   resolved "https://registry.yarnpkg.com/tar/-/tar-4.4.13.tgz#43b364bc52888d555298637b10d60790254ab525"
   integrity sha512-w2VwSrBoHa5BsSyH+KxEqeQBAllHhccyMFVHtGtdMpF4W7IRWfZjFiQceJPChOeTsSDVUpER2T8FA93pr0L+QA==
@@ -1555,7 +1533,7 @@ tempfile@^1.1.1:
     os-tmpdir "^1.0.0"
     uuid "^2.0.1"
 
-through@2, through@^2.3.6, through@^2.3.8, through@~2.3, through@~2.3.1, through@~2.3.4:
+through@2, through@^2.3.8, through@~2.3, through@~2.3.1, through@~2.3.4:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
   integrity sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
