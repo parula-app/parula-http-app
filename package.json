@@ -12,7 +12,7 @@
     },
     "dependencies": {
         "crypto-random-string": "^3.2.0",
-        "express": "^4.17.1",
+        "express": "^4.17.3",
         "pia": "https://github.com/benbucksch/pia",
         "r2": "^2.0.1"
     },
