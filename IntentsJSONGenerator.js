@@ -1,8 +1,8 @@
-import { FiniteDataType } from 'pia/baseapp/datatype/FiniteDataType.js';
-import { EnumDataType } from 'pia/baseapp/datatype/EnumDataType.js';
-import { ListDataType } from 'pia/baseapp/datatype/ListDataType.js';
-import { NamedValuesDataType } from 'pia/baseapp/datatype/NamedValuesDataType.js';
-import { assert } from 'pia/util/util.js';
+import { FiniteDataType } from 'parula/baseapp/datatype/FiniteDataType.js';
+import { EnumDataType } from 'parula/baseapp/datatype/EnumDataType.js';
+import { ListDataType } from 'parula/baseapp/datatype/ListDataType.js';
+import { NamedValuesDataType } from 'parula/baseapp/datatype/NamedValuesDataType.js';
+import { assert } from 'parula/util/util.js';
 
 /**
  * Generates the intents JSON file for the app,

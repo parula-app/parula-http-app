@@ -1,7 +1,7 @@
 import { intentsJSONWithValues } from './IntentsJSONGenerator.js';
-import { Client } from 'pia/client/Client.js';
-import { getConfig } from 'pia/util/config.js';
-import { assert } from 'pia/util/util.js';
+import { Client } from 'parula/client/Client.js';
+import { getConfig } from 'parula/util/config.js';
+import { assert } from 'parula/util/util.js';
 import express from 'express';
 import http from 'http';
 import r2 from 'r2';
@@ -13,13 +13,13 @@ var gAuthKey = null;
 const kCoreURL = "http://localhost:12777";
 
 /**
- * Wraps a Pia voice app as a HTTP REST server.
- * The caller is in all cases Pia core.
+ * Wraps a Parula voice app as a HTTP REST server.
+ * The caller is in all cases Parula core.
  *
  * Reads the basic intents and commands from a JSON file.
  * Then loads the app and lets it add the available values
  * for each type.
- * Then we register our app with the Pia core.
+ * Then we register our app with the Parula core.
  *
  * We also listen to URLs for each app intent, in the form
  * <http://localhost:12127/:appid/:intent> (POST)
@@ -93,7 +93,7 @@ export default class HTTPAppServer {
   }
 
   /**
-   * Notify the Pia core of us
+   * Notify the Parula core of us
    */
   async _registerWithCore() {
     let coreURL = getConfig().coreURL || kCoreURL;
@@ -116,7 +116,7 @@ export default class HTTPAppServer {
       }
     } catch (ex) {
       if (ex.code == "ECONNREFUSED") {
-        throw new Error(`Pia core is not running, on <${coreURL}>`);
+        throw new Error(`Parula core is not running, on <${coreURL}>`);
       } else {
         throw ex;
       }
@@ -125,7 +125,7 @@ export default class HTTPAppServer {
 
   /**
    * The user invoked an intent command and the
-   * Pia core called us to run the intent.
+   * Parula core called us to run the intent.
    *
    * Map it from HTTP and JSON to intent call.
    *
@@ -137,7 +137,7 @@ export default class HTTPAppServer {
    *       ...
    *     }
    *   }
-   * @see HTTPApp.js for the HTTP client = Pia core
+   * @see HTTPApp.js for the HTTP client = Parula core
    */
   async intentCall(intent, request) {
     // TODO map back NamedValues from term to value
@@ -157,8 +157,8 @@ export default class HTTPAppServer {
 
 
 /**
- * Ensures that Pia core is calling us.
- * Insists on a key that was sent to Pia core during registration.
+ * Ensures that Parula core is calling us.
+ * Insists on a key that was sent to Parula core during registration.
  *
  * Prevents that other software contacts us and leaches user data.
  *

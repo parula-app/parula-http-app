@@ -1,19 +1,19 @@
 {
-    "name": "pia-http-app",
+    "name": "parula-http-app",
     "version": "0.1.0",
-    "description": "A Pia voice app that is running in its own process and communicating with Pia using HTTP. This is implementing a HTTP server for the app, so that Pia core can call the app.",
+    "description": "A Parula voice app that is running in its own process and communicating with Parula using HTTP. This is implementing a HTTP server for the app, so that Parula core can call the app.",
     "main": "./HTTPAppServer.js",
     "author": "Ben Bucksch",
     "license": "AGPL-3.0",
-    "homepage": "https://pia.im",
+    "homepage": "https://parula.app",
     "repository": {
         "type": "git",
-        "url": "https://github.com/benbucksch/pia-http-app"
+        "url": "https://github.com/parula-app/parula-http-app"
     },
     "dependencies": {
         "crypto-random-string": "^3.2.0",
         "express": "^4.17.1",
-        "pia": "https://github.com/benbucksch/pia",
+        "parula": "https://github.com/parula-app/assistant",
         "r2": "^2.0.1"
     },
     "devDependencies": {},
